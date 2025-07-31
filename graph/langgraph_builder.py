@@ -3,12 +3,14 @@ from langgraph.prebuilt import ToolNode, tools_condition
 from state.schema import State
 from tools.arxiv_tool import get_arxiv_tool
 from tools.wikipedia_tool import get_wikipedia_tool
+from tools.weather_tool import get_weather
 from agents.chatbot_agent import get_llm
 
 def build_graph():
     arxiv_tool = get_arxiv_tool()
     wiki_tool = get_wikipedia_tool()
-    tools = [arxiv_tool, wiki_tool]
+    
+    tools = [arxiv_tool, wiki_tool,get_weather]
 
     llm = get_llm().bind_tools(tools=tools)
 
