@@ -4,13 +4,14 @@ from state.schema import State
 from tools.arxiv_tool import get_arxiv_tool
 from tools.wikipedia_tool import get_wikipedia_tool
 from tools.weather_tool import get_weather
+from tools.real_estate_tool import get_real_estate_info
 from agents.chatbot_agent import get_llm
 
 def build_graph():
     arxiv_tool = get_arxiv_tool()
     wiki_tool = get_wikipedia_tool()
     
-    tools = [arxiv_tool, wiki_tool,get_weather]
+    tools = [arxiv_tool, wiki_tool,get_weather,get_real_estate_info]
 
     llm = get_llm().bind_tools(tools=tools)
 
